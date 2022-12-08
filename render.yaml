@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: vivi-capstone-server
+    env: node
+    plan: free
+    buildCommand: yarn 
+    startCommand: node index.js
