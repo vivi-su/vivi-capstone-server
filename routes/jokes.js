@@ -10,7 +10,7 @@ router.get("/", (_req, res) => {
   try {
     res.status(200).json(jokes);
   } catch (err) {
-    console.log("Error retrieving the videos", err);
+    console.log("Error retrieving the jokes", err);
   }
 });
 
