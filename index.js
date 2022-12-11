@@ -5,6 +5,7 @@ const app = express();
 const path = require("node:path");
 const jwt = require("jsonwebtoken"); 
 const cors = require("cors");
+const bcrypt = require("bcrypt");
 
 app.use(cors());
 app.use(express.json());
@@ -20,13 +21,11 @@ app.get("/", (_req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-//signup login don't need a token
 app.use((req, res, next)=>{
   if(req.url === "/api/signup" || req.url === "/api/signin"){
     next();
   }else{
     const token = getToken(req);
-    
     if(token){
       console.log('Auth Token:', token);
       if(jwt.verify(token, jsonSecretKey)){
@@ -47,30 +46,41 @@ function getToken(req){
 
 const users = {};
 
-app.post("/api/signup", (req, res) => {
+app.post("/api/signup", async (req, res) => {
   const {username, name, password} = req.body;
+  const hash=await bcrypt.hash(password, 10);
   users[username] ={
     name,
-    password
+    password:hash
   };
   console.log('Users Object:', users);
   res.json({success:"true"});
 });
 
-app.post("/api/signin", (req, res) => {
-  const {username, password} = req.body;
+app.post("/api/signin", async (req, res) => {
+  const { username, password } = req.body;
   const user = users[username];
-  if(user && user.password === password){
-    console.log('Found user:', user);
-    res.json({token: jwt.sign({name: user.name}, jsonSecretKey)});
-  }else {
+  if (!user) {
     res.status(403).json({
       token:"",
       error:{
-        message:"Error logging in. Invalid username/password combination."
+        message:"Error Signing in. Invalid username."
       }
     })
   }
+
+  const isValid = await bcrypt.compare(password, users[username].password);
+  if (!isValid) {
+    res.status(403).json({
+      token: "",
+      error: {
+        message: "Error Signing in. Invalid password.",
+      },
+    });
+  }
+
+  console.log('Found user:', user);
+  res.json({token: jwt.sign({name: user.name}, jsonSecretKey)});
 });
 
 app.get("/api/profile" , (req, res)=> {
