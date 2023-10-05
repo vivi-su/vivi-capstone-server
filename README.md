@@ -1,15 +1,18 @@
-# Kid's Fun Zone
-
+Kid's Fun Zone
 A children’s entertainment website that provides them a variety of fun games.
 
-![Kids Fun Zone](https://github.com/vivi-su/vivi-capstone-server/assets/81454201/5cfed7dc-f6f8-4550-86bb-50637467c87a)
+View website here: https://vivi-capstone.netlify.app/
+Kids Fun Zone
 
+View Frontend Repo here: https://github.com/vivi-su/vivi-capstone
+Overview
+Kid's Fun Zone is a capstone project in Web development program at @BrainStation Vancouver. The primary aim behind creating this application was to delve deep into the inner workings of JavaScript within a React-based environment.
 
-Project Link: https://vivi-capstone.netlify.app/
+This application features three entertaining games: Drumming on the keyboard, Drawing on the Canva and Whack-a-Mole. While I possessed a basic understanding of pure vanilla JavaScript for these games, I was relatively new to working with React.
 
+To further enhance the application's personalization, I implemented JWT for authentication purposes and incorporated fun jokes into backend database, and integrated beloved Disney charactors from the Disney API. Additionally, I leveraged Three.js and Gasp.js for animation, injecting a dynnamica and engaging quality into thie app for kids' enjoyment.
 
-## Built With
-
+Tech Stack
 REACT
 
 SASS
@@ -24,58 +27,50 @@ THREE
 
 GSAP
 
-## API Reference
+API Reference
+{ filterCharacter: 'https://api.disneyapi.dev/character?queryParams',
 
-{
-  filterCharacter: 'https://api.disneyapi.dev/character?queryParams',
+getAllCharacters: 'https://api.disneyapi.dev/characters',
 
-  getAllCharacters: 'https://api.disneyapi.dev/characters',
-  
-  getOneCharacter: 'https://api.disneyapi.dev/characters/:id'
-}
+getOneCharacter: 'https://api.disneyapi.dev/characters/:id' }
 
+Developer Installation Instructions
+Clone repo
 
-## Installation
+FrontEnd:
 
-1. Clone and go into the repo
-   
-   FrontEnd: 
-   
-   git clone git@github.com:vivischulz/vivi-capstone.git
+git clone git@github.com:vivischulz/vivi-capstone.git
 
-   cd vivi-capstone
-   
-   BackEnd:
-   
-   git clone git@github.com:vivischulz/vivi-capstone-server.git
+cd vivi-capstone
 
-   cd vivi-capstone-server
+BackEnd:
 
-2. Install and run NPM packages
+git clone git@github.com:vivischulz/vivi-capstone-server.git
 
-   npm install
+cd vivi-capstone-server
 
-   npm start
+Install and run NPM packages
 
-3. Enter Your Environment Variables
+npm install
 
-   FrontEnd: 
+npm start
 
-   REACT_APP_BACKEND_URL = 'Enter Your BackEnd URL'
-   
-   BackEnd:
+Enter Your Environment Variables
 
-   Port = 'Enter Your Port'
-   
-   jsonSecretKey = 'Enter Your JSON Secret Key'
-   
-## 🍒 About Me
+FrontEnd:
 
-Vivi Schulz
+REACT_APP_BACKEND_URL = 'Enter Your BackEnd URL'
 
-A semiconductor engineer turned into front-end developer
+BackEnd:
 
-LinkedIn: https://www.linkedin.com/in/vivi-schulz/
+Port = 'Enter Your Port'
 
-GitHub: https://github.com/vivischulz
+jsonSecretKey = 'Enter Your JSON Secret Key'
+
+🍒 About Me
+Vivi Su
+
+LinkedIn: https://www.linkedin.com/in/vivi-su
+
+GitHub: https://github.com/vivi-su
 
